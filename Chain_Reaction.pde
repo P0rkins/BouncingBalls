@@ -6,24 +6,22 @@
 // Chain Reaction 
 
 Ball[] _balls;
-boolean pressed = false;
+boolean reactionStarted = false;
 
-// ====================================================================
-// Setup - Initialization of the World
-// ====================================================================
+// Setup
+
 void setup() {
-  size(600,600); // World Size
-  background(0); // Black
-  _balls = new Ball[20];
-  for (int i = 0 ; i < 20 ; i++)
+  size(600,600);
+  background(0);
+  _balls = new Ball[25];
+  for (int i = 0 ; i < _balls.length ; i++)
     _balls[i] = new Ball(random(360), 2 + random(2));
   _balls[0].setState(0);
-  frameRate(60); // 60 FPS Default
+  frameRate(60);
 }
 
-// ====================================================================
-// Draw - Runs Program
-// ====================================================================
+// Draw
+
 void draw() {
   clear();
   for (Ball b : _balls) {
@@ -42,8 +40,8 @@ void draw() {
 }
 
 void mousePressed() {
-  if (!pressed) {
+  if (!reactionStarted) {
     _balls[0] =  new Ball(0,0,mouseX,mouseY,2) ;
-    pressed = true;
+    reactionStarted = true;
   }
 }
